@@ -2,7 +2,7 @@ import Input from "./inputText/input";
 import Items from "./itemsList/items";
 import Filter from "./filter/Filter";
 import {useState} from "react";
-
+import {logDOM} from "@testing-library/react";
 
 function TaskList() {
     const [tasksArr, setTasks] = useState([
@@ -11,13 +11,16 @@ function TaskList() {
         {id: 2, text: "hello world", checked: false}
     ])
     console.log(tasksArr)
-    // function addTask(text) {
-    //     setTasks([...tasks, {id: Date.now(), text: text, checked: false}])
-    // }
+    function addTask(text) {
+        setTasks([...tasksArr, {id: Date.now(), text: text, checked: false}])
+    }
 
     return (
         <div>
             <Input/>
+            {/*TEST BUTTON*/}
+                <button onClick={() => addTask("SAMPLE")}>SampleADD</button>
+            {/*TEST BUTTON*/}
             {
                 tasksArr.map((task) => <Items task={task}/>)
             }
