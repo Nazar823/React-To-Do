@@ -1,9 +1,10 @@
-function Items({task}) {
+function Items(props) {
+    const id = props.task.id;
     return(
         <div>
-            <input type="checkbox" checked={task.checked}/>
-            <p>{task.text}</p>
-            <button>Delete</button>
+            <input onChange={() => props.checkItem(id)} type="checkbox" checked={props.task.checked}/>
+            <p>{props.task.text}</p>
+            <button onClick={() => props.deleteItem(id)}>Delete</button>
         </div>
     );
 }

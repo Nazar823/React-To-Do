@@ -5,12 +5,12 @@ function Filter(props) {
                 <p>Left {props.left} tasks</p>
             </div>
             <div>
-                <button>All</button>
-                <button>ToDo</button>
-                <button>Completed</button>
+                <button onClick={() => props.filter("Default")}>All</button>
+                <button onClick={() => props.filter("ToDo")}>ToDo</button>
+                <button onClick={() => props.filter("Completed")}>Completed</button>
             </div>
             <div>
-                <button>Delete checked</button>
+                <button onClick={() => props.deleteChecked()}>Delete checked</button>
             </div>
         </div>
     );

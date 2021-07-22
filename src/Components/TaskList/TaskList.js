@@ -11,20 +11,42 @@ function TaskList() {
         {id: 2, text: "hello world", checked: false}
     ])
     console.log(tasksArr)
-    function addTask(text) {
+     function addTask(text) {
         setTasks([...tasksArr, {id: Date.now(), text: text, checked: false}])
+         console.log(tasksArr)
+    }
+    const checked = [...tasksArr.filter(task => task.checked)]
+    const noChecked = [...tasksArr.filter(task =>  !task.checked)]
+    let printArr = [];
+    function filter(mode) {
+        switch (mode) {
+            case "ToDo": printArr = noChecked;
+            case "Completed": printArr = checked;
+            default:  printArr = tasksArr;
+        }
+    }
+    function deleteChecked() {
+        setTasks(noChecked);
+    }
+    function deleteItem(id) {
+        setTasks([...tasksArr.filter(task => task.id !== id)])
+    }
+    function checkItem(id) {
+        setTasks(tasksArr.map(task => {
+            if (task.id === id){
+                task.checked = !task.checked
+            }
+            return task;
+        }))
     }
 
     return (
         <div>
-            <Input/>
-            {/*TEST BUTTON*/}
-                <button onClick={() => addTask("SAMPLE")}>SampleADD</button>
-            {/*TEST BUTTON*/}
+            <Input addTask={addTask}/>
             {
-                tasksArr.map((task) => <Items task={task}/>)
+                tasksArr.map((task) => <Items checkItem={checkItem} deleteItem={deleteItem} task={task}/>)
             }
-            <Filter left={tasksArr.length}/>
+            <Filter filter={filter} deleteChecked={deleteChecked} left={noChecked.length}/>
         </div>
     );
 }
