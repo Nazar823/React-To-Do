@@ -44,7 +44,7 @@ function TaskList() {
         <div>
             <Input addTask={addTask}/>
             {
-                tasksArr.map((task) => <Items checkItem={checkItem} deleteItem={deleteItem} task={task}/>)
+                tasksArr.map((task) => <Items key={task.id} checkItem={checkItem} deleteItem={deleteItem} task={task}/>)
             }
             <Filter filter={filter} deleteChecked={deleteChecked} left={noChecked.length}/>
         </div>
