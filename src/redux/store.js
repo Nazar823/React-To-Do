@@ -1,5 +1,5 @@
 import {createStore} from "@reduxjs/toolkit";
-import {reducer} from "./test/test"
+import {reducer} from "../test/test"
 
 const store = createStore(reducer);
 
