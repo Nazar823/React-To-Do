@@ -1,0 +1,7 @@
+.filter {
+    font-size: 12px;
+    justify-content: space-between;
+    background-color: white;
+    border: none;
+    display: flex;
+}

@@ -1,6 +1,8 @@
 import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {addTodo} from "../../../redux/actions/actionTodo";
+import "./style.css"
+
 function Input() {
     const dispatch = useDispatch();
     const [textInput, settextInput] = useState ('');
@@ -17,7 +19,7 @@ function Input() {
     }
     return (
         <div>
-            <input value={textInput} onKeyDown={addTask} onChange={changeText} placeholder="Add a new task"/>
+            <input className="input" value={textInput} onKeyDown={addTask} onChange={changeText} placeholder="Enter your task name here"/>
         </div>
     )
 }

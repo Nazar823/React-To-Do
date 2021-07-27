@@ -2,6 +2,7 @@ import Input from "./inputText/input";
 import Items from "./itemsList/items";
 import Filter from "./filter/Filter";
 import {useDispatch, useSelector} from "react-redux";
+import "./style.css"
 
 let outArray;
 
@@ -23,7 +24,7 @@ function TaskList() {
             break
     }
     return (
-        <div>
+        <div className="toDo">
             <Input />
             {
                 outArray.map(task => <Items key={task.id} task={task}/>)

@@ -8,21 +8,22 @@ import {
 import {
     deleteChecked
 } from "../../../redux/actions/actionTodo"
+import "./style.css"
 
 function Filter(props) {
     const dispatch = useDispatch()
     return (
         <div>
             <div>
-                <p>Left {props.left} tasks</p>
+                <p className="filter" >Left {props.left} tasks</p>
             </div>
             <div>
-                <button onClick={() => dispatch(checkedAny())}>All</button>
-                <button onClick={() => dispatch(checkedFalse())}>ToDo</button>
-                <button onClick={() => dispatch(checkedTrue())}>Completed</button>
+                <button className="filter" onClick={() => dispatch(checkedAny())}>All</button>
+                <button className="filter" onClick={() => dispatch(checkedFalse())}>ToDo</button>
+                <button className="filter" onClick={() => dispatch(checkedTrue())}>Completed</button>
             </div>
             <div>
-                <button onClick={() => dispatch(deleteChecked())}>Delete checked</button>
+                <button className="filter" onClick={() => dispatch(deleteChecked())}>Delete checked</button>
             </div>
         </div>
     );

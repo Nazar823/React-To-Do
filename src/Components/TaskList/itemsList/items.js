@@ -1,6 +1,6 @@
 import {useDispatch} from "react-redux";
-import {checkTodo, deleteTodo, refreshTodo} from "../../../redux/actions/actionTodo";
-import {useState} from "react";
+import {checkTodo, deleteTodo} from "../../../redux/actions/actionTodo";
+import "./style.css";
 
 function Items({task}) {
     const dispatch = useDispatch();
@@ -9,11 +9,18 @@ function Items({task}) {
         dispatch(checkTodo(id))
         dispatch(deleteTodo())
     }
+    function checkedStyle() {
+        if (task.checked){
+            return "item_div, item_div_checked"
+        } else {
+            return "item_div"
+        }
+    }
     return(
-        <div>
-            <input onChange={() => check()} type="checkbox" defaultChecked={task.checked}/>
-            <p>{task.text}</p>
-            <button onClick={() => dispatch(deleteTodo(id))}>Delete</button>
+        <div className={checkedStyle()}>
+            <input className="itemCheckBox" onChange={() => check()} type="checkbox" defaultChecked={task.checked}/>
+            <p className="itemText">{task.text}</p>
+            <button className="itemDeleteButton" onClick={() => dispatch(deleteTodo(id))}>Delete</button>
         </div>
     );
 }
