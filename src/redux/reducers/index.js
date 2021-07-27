@@ -1,12 +1,11 @@
-import {applyMiddleware, combineReducers} from "@reduxjs/toolkit";
-import React from "react";
-import setZero from "./setZero";
-import {createStore} from "@reduxjs/toolkit";
-// import {composeWithDevTools} from "@reduxjs/toolkit/dist/devtoolsExtension";
-import thunkMiddleware from 'redux-thunk';
+import todosReducer from "./todosReducer";
+import filterReducer from "./filterReducer";
+import {combineReducers, createStore} from "redux";
+
 
 const rootStore = combineReducers({
-    setZero
+    todosReducer,
+    filterReducer
 })
 
 export default createStore(rootStore)

@@ -1,18 +1,23 @@
 import {useState} from "react";
-function Input(props) {
-    const [val, setVal] = useState ('');
+import {useDispatch} from "react-redux";
+import {addTodo} from "../../../redux/actions/actionTodo";
+function Input() {
+    const dispatch = useDispatch();
+    const [textInput, settextInput] = useState ('');
+
     function changeText(event) {
-        setVal(event.target.value);
+        settextInput(event.target.value);
     }
-    const addTaskBT = (e) => {
-        if (e.key === 'Enter' && (val.trimRight().trimLeft() !=="")) {
-            props.addTask(val);
-            setVal('');
+    function addTask(e) {
+        if (e.key === 'Enter' && (textInput.trimRight().trimLeft() !=="")) {
+            dispatch(addTodo({id: Date.now(), text: textInput, checked: false}))
+            settextInput('');
         }
+
     }
     return (
         <div>
-            <input value={val} onKeyDown={addTaskBT} onChange={changeText} placeholder="Add a new task"/>
+            <input value={textInput} onKeyDown={addTask} onChange={changeText} placeholder="Add a new task"/>
         </div>
     )
 }
