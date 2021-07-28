@@ -1,22 +1,39 @@
 .item_div {
     display: flex;
     align-items: center;
-    border: black solid 1px;
+    border-bottom: #aaa solid 1px;
     justify-content:space-between;;
 }
-
-.itemCheckBox, .itemDeleteButton {
-    margin: 10px;
+.itemCheckBox, .DeleteButton {
+    margin: 15px;
+    color: black;
 }
-
+svg {
+    margin-right: 15px;
+}
+.itemDeleteButton {
+    color: #777777;
+}
+.itemDeleteButton :hover{
+    color: black;
+}
+.DeleteButton{
+    display: none;
+}
 .item_div_checked {
     justify-content:space-between;
     display: flex;
     align-items: center;
-    border: black solid 1px;
+    border-bottom: #aaa solid 1px;
+    color: #777777;
     text-decoration: line-through;
 }
-
+.itemText {
+    word-wrap: break-word;
+    word-break: break-word;
+    width: 400px;
+    text-align: left;
+}
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

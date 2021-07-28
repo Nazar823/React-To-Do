@@ -1,6 +1,7 @@
 import todosReducer from "./todosReducer";
 import filterReducer from "./filterReducer";
-import {combineReducers, createStore} from "redux";
+import {applyMiddleware, combineReducers, createStore} from "redux";
+import {composeWithDevTools} from "redux-devtools-extension";
 
 
 const rootStore = combineReducers({
@@ -8,4 +9,4 @@ const rootStore = combineReducers({
     filterReducer
 })
 
-export default createStore(rootStore)
+export default createStore(rootStore, composeWithDevTools(applyMiddleware()))

@@ -1,3 +1,12 @@
 .input {
-    margin: 10px;
+    margin: 15px;
+    border: none;
+    font-size: 14px;
+    width: 450px;
+    border-bottom: 1px solid #aaa;
+    outline: none;
+    padding-bottom: 10px;
+}
+.inputDiv {
+    margin-bottom: 5px;
 }

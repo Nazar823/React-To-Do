@@ -1,30 +1,47 @@
 import {useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {
     checkedTrue,
     checkedFalse,
     checkedAny
 } from "../../../redux/actions/actionFilter";
 import {
-    deleteChecked
+    checkTodo,
+    deleteChecked, deleteTodo, updateTodo
 } from "../../../redux/actions/actionTodo"
 import "./style.css"
 
+let classDeleter
+
 function Filter(props) {
     const dispatch = useDispatch()
+    const state = useSelector(state => state.todosReducer)
+    for (let i = 0; i < state.length; i++){
+        if (state[i].checked) {
+            classDeleter = "gray"
+            break
+        } else {
+            classDeleter = "gray, deleterDisplayNo"
+        }
+    }
+
+    function checkAll() {
+        state.forEach(task => {
+            if (!task.checked){
+                dispatch(checkTodo(task.id))
+            }
+        })
+        dispatch(updateTodo())
+    }
     return (
-        <div>
-            <div>
-                <p className="filter" >Left {props.left} tasks</p>
+        <div className="filter">
+            <button id="counter" className="filter, gray" onClick={() => checkAll()} >{props.left} tasks left</button>
+            <div className="filterBtsDiv">
+                <button className="filterBts" onClick={() => dispatch(checkedAny())}>All</button>
+                <button className="filterBts" onClick={() => dispatch(checkedFalse())}>ToDo</button>
+                <button className="filterBts" onClick={() => dispatch(checkedTrue())}>Completed</button>
             </div>
-            <div>
-                <button className="filter" onClick={() => dispatch(checkedAny())}>All</button>
-                <button className="filter" onClick={() => dispatch(checkedFalse())}>ToDo</button>
-                <button className="filter" onClick={() => dispatch(checkedTrue())}>Completed</button>
-            </div>
-            <div>
-                <button className="filter" onClick={() => dispatch(deleteChecked())}>Delete checked</button>
-            </div>
+            <button id="deleter" className={classDeleter} onClick={() => dispatch(deleteChecked())}>Clear completed</button>
         </div>
     );
 }

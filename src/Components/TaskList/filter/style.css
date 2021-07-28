@@ -1,7 +1,44 @@
-.filter {
-    font-size: 12px;
+.filterBtsDiv {
+    display: flex;
+    justify-content: center;
+}
+.filterBts {
+    border: none;
+    background-color: white;
+}
+.filterBts {
+    border: 1px solid #aaaaaa;
+    border-radius: 4px;
+    background-color: white;
+}
+.deleterDisplayNo{
+    visibility: hidden;
+    height: 18px;
+    width: 114px;
+    padding: 0px;
+    margin: 0px;
+}
+.gray {
+    color: #777;
+    font-size: 14px;
     justify-content: space-between;
+    align-items: center;
     background-color: white;
     border: none;
     display: flex;
+}
+gray :hover {
+    color: black;
+}
+.filter {
+    padding: 12px 20px;
+    font-size: 14px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border: none;
+    display: flex;
+}
+#counter:hover, #deleter:hover {
+    color: black;
 }

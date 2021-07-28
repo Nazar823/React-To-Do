@@ -11,14 +11,13 @@ function Input() {
         settextInput(event.target.value);
     }
     function addTask(e) {
-        if (e.key === 'Enter' && (textInput.trimRight().trimLeft() !=="")) {
+        if (e.key === 'Enter' && (textInput.trimRight().trimLeft() !== "")) {
             dispatch(addTodo({id: Date.now(), text: textInput, checked: false}))
             settextInput('');
         }
-
     }
     return (
-        <div>
+        <div className="inputDiv">
             <input className="input" value={textInput} onKeyDown={addTask} onChange={changeText} placeholder="Enter your task name here"/>
         </div>
     )

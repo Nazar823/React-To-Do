@@ -2,17 +2,20 @@ import {
     ADD_TODO,
     CHECK_TODO,
     DELETE_CHECKED_TODO,
-    DELETE_TODO
+    DELETE_TODO, UPDATE_TODO
 } from "../actions/actionsType";
 
 const initialState = [
-    {id: 0, text: "text sample", checked: false},
-    {id: 1, text: "second", checked: true},
-    {id: 2, text: "hello world", checked: false}
+    {id: 0, text: "Text sample", checked: false},
+    {id: 1, text: "Second", checked: false},
+    {id: 2, text: "Hello world", checked: false},
+    {id: 3, text: "Test", checked: false}
 ]
 
 function todosReducer(state = initialState, action) {
     switch (action.type) {
+        case UPDATE_TODO:
+            return state.filter(task => true)
         case ADD_TODO:
             return [
                 ...state,
@@ -23,13 +26,12 @@ function todosReducer(state = initialState, action) {
         case DELETE_CHECKED_TODO:
             return state.filter(task => !task.checked)
         case CHECK_TODO:
-            let Arr = state
-            for (let i = 0; i < Arr.length; i++) {
-                if (Arr[i].id === action.id) {
-                    Arr[i].checked = !Arr[i].checked
+            return state.map(task => {
+                if (task.id === action.id){
+                    task.checked = !task.checked
                 }
-            }
-            return Arr
+                return task
+            })
         default:
             return state;
     }

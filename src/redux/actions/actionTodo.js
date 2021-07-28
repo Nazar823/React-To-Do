@@ -3,7 +3,13 @@ import {
     CHECK_TODO,
     DELETE_CHECKED_TODO,
     DELETE_TODO,
+    UPDATE_TODO
 } from "./actionsType";
+export const updateTodo = () => {
+    return {
+        type: UPDATE_TODO
+    }
+}
 export const addTodo = (newTodo) => {
     return {
         type: ADD_TODO,
