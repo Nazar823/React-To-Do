@@ -22,6 +22,7 @@
     display: none;
 }
 .deleteIcon {
+    transition: 0.5s;
     margin-right: 15px;
     opacity: 0.4;
 }
