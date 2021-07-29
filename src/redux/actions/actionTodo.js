@@ -1,6 +1,7 @@
 import {
     ADD_TODO,
     CHECK_TODO,
+    CHECK_ALL,
     DELETE_CHECKED_TODO,
     DELETE_TODO,
     UPDATE_TODO
@@ -8,6 +9,11 @@ import {
 export const updateTodo = () => {
     return {
         type: UPDATE_TODO
+    }
+}
+export const checkAll = () => {
+    return {
+        type: CHECK_ALL
     }
 }
 export const addTodo = (newTodo) => {

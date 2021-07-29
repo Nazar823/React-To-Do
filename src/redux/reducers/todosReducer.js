@@ -1,6 +1,7 @@
 import {
     ADD_TODO,
     CHECK_TODO,
+    CHECK_ALL,
     DELETE_CHECKED_TODO,
     DELETE_TODO, UPDATE_TODO
 } from "../actions/actionsType";
@@ -30,6 +31,11 @@ function todosReducer(state = initialState, action) {
                 if (task.id === action.id){
                     task.checked = !task.checked
                 }
+                return task
+            })
+        case CHECK_ALL:
+            return state.map(task => {
+                task.checked = true
                 return task
             })
         default:
