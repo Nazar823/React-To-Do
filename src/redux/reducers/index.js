@@ -2,6 +2,7 @@ import todosReducer from "./todosReducer";
 import filterReducer from "./filterReducer";
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import {composeWithDevTools} from "redux-devtools-extension";
+import thunk from "redux-thunk";
 
 
 const rootStore = combineReducers({
@@ -9,4 +10,4 @@ const rootStore = combineReducers({
     filterReducer
 })
 
-export default createStore(rootStore, composeWithDevTools(applyMiddleware()))
+export default createStore(rootStore, composeWithDevTools(applyMiddleware(thunk)))

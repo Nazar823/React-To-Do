@@ -14,7 +14,6 @@ import "./style.css"
 
 let classDeleter
 let buttonClass = ["filterBtsSelected", "filterBts", "filterBts"]
-console.log(buttonClass[0])
 
 function Filter(props) {
     const dispatch = useDispatch()
