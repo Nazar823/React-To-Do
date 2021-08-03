@@ -1,5 +1,6 @@
 import "./style.css"
 import axios from "axios";
+import {Link} from "react-router-dom"
 
 function Login() {
     const log = async (e) => {
@@ -22,7 +23,9 @@ function Login() {
             <form onSubmit={log}>
                 <input id="mail" name='mailN' className="input" type="text" placeholder="Enter your E-mail"/>
                 <input id="password" name='pass' className="input" type="password" placeholder="Enter your password"/>
-                <button id="regBT">Registration</button>
+                <Link to="/registration">
+                    <button id="regBT">Registration</button>
+                </Link>
                 <button id="loginBT">Login</button>
             </form>
         </div>

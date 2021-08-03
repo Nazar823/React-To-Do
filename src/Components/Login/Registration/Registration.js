@@ -1,5 +1,6 @@
 import "../style.css"
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 function Registration() {
     const reg = async (e) => {
@@ -23,6 +24,9 @@ function Registration() {
                 <input id="mail" name="username" className="input" type="text" placeholder="Enter your E-mail"/>
                 <input id="password" name="password" className="input" type="password" placeholder="Enter your password"/>
                 <input id="confirmPassword" className="input" type="password" placeholder="Confirm your password"/>
+                <Link to="/login">
+                    <button id="regBT">A have account? Login</button>
+                </Link>
                 <button id="loginBT">Create account</button>
             </form>
         </div>
