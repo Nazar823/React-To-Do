@@ -13,9 +13,9 @@ function Login() {
             {
                 'Access-Control-Allow-Origin':"*"
             }
-        ).then(res => console.log(res))
+        ).then(res => alert(res.data))
+            .catch(err => alert("Неверный логин или пароль"))
     }
-
 
     return(
         <div className="block">
