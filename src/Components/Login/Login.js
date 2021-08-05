@@ -1,8 +1,12 @@
 import "./style.css"
 import axios from "axios";
 import {Link} from "react-router-dom"
+import thunk from "redux-thunk";
 
 function Login() {
+    const thunkLog = async (e) => {
+
+    }
     const log = async (e) => {
         e.preventDefault()
         const fromData = new FormData(e.target)

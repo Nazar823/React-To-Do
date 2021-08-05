@@ -8,12 +8,12 @@ function App() {
     return (
         <div className="App">
             <Header/>
-            <switch>
+            <Switch>
                 <Route path='/registration' component={Registration}/>
                 <Route path='/login' component={Login}/>
                 <Route path='/tasks' component={TaskList}/>
                 {/*<Redirect from='/' to='/login'/>*/}
-            </switch>
+            </Switch>
         </div>
     );
 };
