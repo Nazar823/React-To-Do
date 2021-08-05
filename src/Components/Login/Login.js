@@ -2,10 +2,14 @@ import "./style.css"
 import axios from "axios";
 import {Link} from "react-router-dom"
 import thunk from "redux-thunk";
+import loginReducer from "../../redux/reducers/loginReducer";
+import {login} from "../../redux/actions/actionLogin";
 
 function Login() {
     const thunkLog = async (e) => {
-
+        const fromData = new FormData(e.target)
+        alert('кнопка нажимается')
+        login(fromData.get('mailN'), fromData.get('pass'))
     }
     const log = async (e) => {
         e.preventDefault()
@@ -24,7 +28,7 @@ function Login() {
     return(
         <div className="block">
             <h2>Login</h2>
-            <form onSubmit={log}>
+            <form onSubmit={thunkLog}>
                 <input id="mail" name='mailN' className="input" type="text" placeholder="Enter your E-mail"/>
                 <input id="password" name='pass' className="input" type="password" placeholder="Enter your password"/>
                 <Link to="/registration">
