@@ -1,18 +1,34 @@
 import {LOGIN, LOGIN_STARTED, ERR_LOGIN} from "./actionsType";
-import axios from "axios";
+const axios = require('axios').default;
 
-export const login = ({username, password}) => {
+export const login = (username, password) => {
     return dispatch => {
-        axios.post('/login', {
-            username,
-            password
-        })
-            .then(res => {
-                dispatch(sendLogin(res.data))
+
+        // try {
+            console.log('Запрос отправлен')
+            const response = axios.get(`http://localhost:5000/api/login?username=${username}&password=${password}`,
+        //         , {
+        //             username:username,
+        //             password:password,
+        //         },
+        {
+                headers: {
+                    // 'Access-Control-Allow-Origin': 'http://localhost:5000',
+                    "Content-Type": "application/json;charset=utf-8",
+                    // "Access-Control-Max-Age": "10000",
+                    // "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+                },
+            }).then(e => {
+                console.log(e)
+                debugger
             })
-            .catch(err => {
-               dispatch(errLogin(err.message()))
-        })
+            console.log('Ответ: ',response)
+            debugger
+        // } catch (err) {
+        //     console.log(err.message)
+        //     dispatch(errLogin(err))
+        // }
+        dispatch(response)
     }
 }
 const startedLogin = () => ({

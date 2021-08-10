@@ -1,20 +1,18 @@
 import "../style.css"
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {registration} from "../../../redux/actions/actionRegistration";
+import {useDispatch} from "react-redux";
 
 function Registration() {
+    const dispatsh = useDispatch()
     const reg = async (e) => {
-        e.preventDefault()
         const fromData = new FormData(e.target)
-        await axios.post('/registration', {
-            username: fromData.get('username'),
-            password: fromData.get('password'),
-            nickname: fromData.get('nickname')
-        },
-            {
-                'Access-Control-Allow-Origin':"*"
-            }
-        ).then(res => console.log(res))
+        if (fromData.get('password') === fromData.get('confPass')){
+            dispatsh(registration(fromData.get('username'), fromData.get('password'), fromData.get('nickname')))
+        } else {
+            alert('Подтвердите пароль!')
+        }
     }
     return(
         <div className="block">
@@ -23,7 +21,7 @@ function Registration() {
                 <input id="nickName"  name="nickname" className="input" type="text" placeholder="Enter your name"/>
                 <input id="mail" name="username" className="input" type="mail" placeholder="Enter your E-mail"/>
                 <input id="password" name="password" className="input" type="password" placeholder="Enter your password"/>
-                <input id="confirmPassword" className="input" type="password" placeholder="Confirm your password"/>
+                <input id="confirmPassword" name="confPass" className="input" type="password" placeholder="Confirm your password"/>
                 <Link to="/login">
                     <button id="regBT">A have account? Login</button>
                 </Link>

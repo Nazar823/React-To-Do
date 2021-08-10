@@ -12,7 +12,7 @@ function App() {
                 <Route path='/registration' component={Registration}/>
                 <Route path='/login' component={Login}/>
                 <Route path='/tasks' component={TaskList}/>
-                {/*<Redirect from='/' to='/login'/>*/}
+                <Redirect from='/' to='/login'/>
             </Switch>
         </div>
     );
