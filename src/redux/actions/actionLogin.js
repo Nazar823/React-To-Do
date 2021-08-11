@@ -1,51 +1,36 @@
-import {LOGIN, LOGIN_STARTED, ERR_LOGIN} from "./actionsType";
-const axios = require('axios').default;
+import {
+    LOGIN_SEND,
+    LOGIN_STARTED,
+    ERR_LOGIN
+} from "./actionsType";
+import axios from "axios";
 
 export const login = (username, password) => {
-    return dispatch => {
+    return async dispatch => {
+        try {
+            const response = await axios.post('http://localhost:5000/api/login',
+                {
+                    username,
+                    password
+                })
 
-        // try {
-            console.log('Запрос отправлен')
-            const response = axios.get(`http://localhost:5000/api/login?username=${username}&password=${password}`,
-        //         , {
-        //             username:username,
-        //             password:password,
-        //         },
-        {
-                headers: {
-                    // 'Access-Control-Allow-Origin': 'http://localhost:5000',
-                    "Content-Type": "application/json;charset=utf-8",
-                    // "Access-Control-Max-Age": "10000",
-                    // "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-                },
-            }).then(e => {
-                console.log(e)
-                debugger
-            })
-            console.log('Ответ: ',response)
-            debugger
-        // } catch (err) {
-        //     console.log(err.message)
-        //     dispatch(errLogin(err))
-        // }
-        dispatch(response)
+        } catch (e) {
+            console.log(e)
+        }
     }
 }
-const startedLogin = () => ({
+export const startedLogin = () => ({
     type: LOGIN_STARTED,
 })
-const sendLogin = (token, {id, username, nickname}) => ({
-    type: LOGIN,
+export const sendLogin = (login_data) => ({
+    type: LOGIN_SEND,
     payload: {
-        token,
-        id,
-        username,
-        nickname
+        ...login_data
     }
 })
-const errLogin = error => ({
+export const errLogin = (err) => ({
     type: ERR_LOGIN,
     payload: {
-        error
+        err
     }
 })

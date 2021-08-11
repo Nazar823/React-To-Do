@@ -5,11 +5,12 @@ import {registration} from "../../../redux/actions/actionRegistration";
 import {useDispatch} from "react-redux";
 
 function Registration() {
-    const dispatsh = useDispatch()
+    const dispatch = useDispatch()
     const reg = async (e) => {
+        e.preventDefault()
         const fromData = new FormData(e.target)
         if (fromData.get('password') === fromData.get('confPass')){
-            dispatsh(registration(fromData.get('username'), fromData.get('password'), fromData.get('nickname')))
+            dispatch(registration(fromData.get('username'), fromData.get('password'), fromData.get('nickname')))
         } else {
             alert('Подтвердите пароль!')
         }
