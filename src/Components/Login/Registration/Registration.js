@@ -1,7 +1,7 @@
 import "../style.css"
 import axios from "axios";
 import {Link} from "react-router-dom";
-import {registration} from "../../../redux/actions/actionRegistration";
+import {registration} from "../../../API/RegistrationAPI/RegistrationAPI";
 import {useDispatch} from "react-redux";
 
 function Registration() {

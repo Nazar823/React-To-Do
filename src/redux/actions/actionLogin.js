@@ -1,24 +1,10 @@
 import {
     LOGIN_SEND,
     LOGIN_STARTED,
-    ERR_LOGIN
+    ERR_LOGIN,
+    INVALID_AUTH
 } from "./actionsType";
-import axios from "axios";
 
-export const login = (username, password) => {
-    return async dispatch => {
-        try {
-            const response = await axios.post('http://localhost:5000/api/login',
-                {
-                    username,
-                    password
-                })
-
-        } catch (e) {
-            console.log(e)
-        }
-    }
-}
 export const startedLogin = () => ({
     type: LOGIN_STARTED,
 })
@@ -27,6 +13,9 @@ export const sendLogin = (login_data) => ({
     payload: {
         ...login_data
     }
+})
+export const invalidAuth = () => (-{
+  type: INVALID_AUTH
 })
 export const errLogin = (err) => ({
     type: ERR_LOGIN,

@@ -5,15 +5,13 @@ import {
     DELETE_CHECKED_TODO,
     DELETE_TODO, UPDATE_TODO
 } from "../actions/actionsType";
+import {getTasksAPI} from "../../API/TaskAPI/getTasksAPI";
 
-const initialState = [
-    {id: 0, text: "Text sample", checked: false},
-    {id: 1, text: "Second", checked: false},
-    {id: 2, text: "Hello world", checked: false},
-    {id: 3, text: "Test", checked: false}
-]
-
+let initialState = []
 function todosReducer(state = initialState, action) {
+    state = JSON.parse(localStorage.getItem('tasks'))
+    console.log('LOCAL: ', initialState)
+    console.log('SERVER: ', getTasksAPI())
     switch (action.type) {
         case UPDATE_TODO:
             return state.filter(task => true)
@@ -42,5 +40,4 @@ function todosReducer(state = initialState, action) {
             return state;
     }
 }
-
 export default todosReducer;

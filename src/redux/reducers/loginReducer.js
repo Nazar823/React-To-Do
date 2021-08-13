@@ -3,7 +3,7 @@ import {
     LOGIN_STARTED,
     ERR_LOGIN
 } from "../actions/actionsType";
-import ApiService from "../../Api/ApiService";
+import ApiService from "../../API/LoginAPI/LoginAPI";
 import {errLogin, sendLogin, startedLogin} from "../actions/actionLogin";
 
 const initialState = null

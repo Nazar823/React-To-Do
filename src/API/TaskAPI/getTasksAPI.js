@@ -1,13 +1,15 @@
 import axios from "axios";
+import {getTodo} from "../../redux/actions/actionTodo";
 
-export const getTasks = (user_id, token) => {
+export const getTasksAPI = (user, token) => {
     return async dispatch => {
         try {
-            user_id = '6113d6e91c05aa5a764fa1d6' //заглушка
-            const response = await axios.post('http://localhost:5000/api/tasks',{
-                user: user_id
+            const response = await axios.post('http://localhost:5000/api/tasks',
+                {
+                user
             })
-            console.log('FROM REQUEST: ', response.data)
+            getTodo(response.data)
+            localStorage.setItem('tasks', JSON.stringify(response.data))
         } catch (e){
             console.log(e.message)
         }

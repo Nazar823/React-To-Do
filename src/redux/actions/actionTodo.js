@@ -4,7 +4,8 @@ import {
     CHECK_ALL,
     DELETE_CHECKED_TODO,
     DELETE_TODO,
-    UPDATE_TODO
+    UPDATE_TODO,
+    GET_TODO
 } from "./actionsType";
 export const updateTodo = () => {
     return {
@@ -14,6 +15,14 @@ export const updateTodo = () => {
 export const checkAll = () => {
     return {
         type: CHECK_ALL
+    }
+}
+export const getTodo = (data) => {
+    return {
+        type: GET_TODO,
+        payload: {
+            ...data
+        }
     }
 }
 export const addTodo = (newTodo) => {
