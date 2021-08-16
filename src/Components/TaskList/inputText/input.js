@@ -2,18 +2,20 @@ import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {addTodo} from "../../../redux/actions/actionTodo";
 import "./style.css"
+import {addTaskAPI} from "../../../API/TaskAPI/addTaskAPI";
 
 function Input() {
     const dispatch = useDispatch();
-    const [textInput, settextInput] = useState ('');
+    const [textInput, setTextInput] = useState ('');
 
     function changeText(event) {
-        settextInput(event.target.value);
+        setTextInput(event.target.value);
     }
     function addTask(e) {
         if (e.key === 'Enter' && (textInput.trimRight().trimLeft() !== "")) {
-            dispatch(addTodo({id: Date.now(), text: textInput, checked: false}))
-            settextInput('');
+            const user = localStorage.getItem('user')
+            dispatch(addTaskAPI(JSON.parse(user).id, textInput))
+            setTextInput('');
         }
     }
     return (

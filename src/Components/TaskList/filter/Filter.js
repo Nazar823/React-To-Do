@@ -11,6 +11,8 @@ import {
     updateTodo
 } from "../../../redux/actions/actionTodo"
 import "./style.css"
+import {deleteCheckedAPI} from "../../../API/TaskAPI/deleteCheckedAPI";
+import {checkAllTasksAPI} from "../../../API/TaskAPI/checkAllTasksAPI";
 
 let classDeleter
 let buttonClass = ["filterBtsSelected", "filterBts", "filterBts"]
@@ -29,7 +31,7 @@ function Filter(props) {
     return (
         <div className="filter">
             <button id="counter" className="filter, gray" onClick={() => {
-                dispatch(checkAll())
+                dispatch(checkAllTasksAPI())
                 setTimeout(function () {
                     dispatch(checkedFalse())
                 }, 50)
@@ -59,7 +61,7 @@ function Filter(props) {
                     buttonClass = ["filterBts", "filterBts", "filterBtsSelected"]
                 }}>Completed</button>
             </div>
-            <button id="deleter" className={classDeleter} onClick={() => dispatch(deleteChecked())}>Clear completed</button>
+            <button id="deleter" className={classDeleter} onClick={() => dispatch(deleteCheckedAPI())}>Clear completed</button>
         </div>
     );
 }

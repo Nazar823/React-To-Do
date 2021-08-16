@@ -1,7 +1,7 @@
 import {
     ADD_TODO,
     CHECK_TODO,
-    CHECK_ALL,
+    CHECK_ALL, GET_TODO,
     DELETE_CHECKED_TODO,
     DELETE_TODO, UPDATE_TODO
 } from "../actions/actionsType";
@@ -9,10 +9,10 @@ import {getTasksAPI} from "../../API/TaskAPI/getTasksAPI";
 
 let initialState = []
 function todosReducer(state = initialState, action) {
-    state = JSON.parse(localStorage.getItem('tasks'))
-    console.log('LOCAL: ', initialState)
-    console.log('SERVER: ', getTasksAPI())
+    console.log('STATE: ', state)
     switch (action.type) {
+        case GET_TODO:
+            return getTasksAPI(JSON.parse(localStorage.getItem('user')).id)
         case UPDATE_TODO:
             return state.filter(task => true)
         case ADD_TODO:

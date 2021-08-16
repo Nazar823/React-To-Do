@@ -17,15 +17,16 @@ export const checkAll = () => {
         type: CHECK_ALL
     }
 }
-export const getTodo = (data) => {
+export const getTodo = (todos) => {
     return {
         type: GET_TODO,
         payload: {
-            ...data
+            ...todos
         }
     }
 }
 export const addTodo = (newTodo) => {
+    console.log('ADDED TODO: ', newTodo)
     return {
         type: ADD_TODO,
         newTodo
