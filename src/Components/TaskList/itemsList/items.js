@@ -9,9 +9,6 @@ import {deleteTaskAPI} from "../../../API/TaskAPI/deleteTaskAPI"
 
 function Items({task}) {
     const dispatch = useDispatch();
-    function check(id) {
-        dispatch(checkTaskAPI(id))
-    }
     function checkedStyle(element) {
         switch (element) {
             case "div":

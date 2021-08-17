@@ -9,7 +9,9 @@ export const getTasksAPI = (user, token) => {
                 user: JSON.parse(localStorage.getItem('user')).id
             },
                 {
-                    headers: {"authorization": localStorage.getItem('token')}                })
+                    headers: {"authorization": localStorage.getItem('token')}
+                })
+
             dispatch(getTodo(response.data))
         } catch (e){
             console.log(e.message)

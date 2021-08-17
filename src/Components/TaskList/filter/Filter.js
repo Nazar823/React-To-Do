@@ -5,11 +5,6 @@ import {
     checkedFalse,
     checkedAny
 } from "../../../redux/actions/actionFilter";
-import {
-    deleteChecked,
-    checkAll,
-    updateTodo
-} from "../../../redux/actions/actionTodo"
 import "./style.css"
 import {deleteCheckedAPI} from "../../../API/TaskAPI/deleteCheckedAPI";
 import {checkAllTasksAPI} from "../../../API/TaskAPI/checkAllTasksAPI";
@@ -19,9 +14,10 @@ let buttonClass = ["filterBtsSelected", "filterBts", "filterBts"]
 
 function Filter(props) {
     const dispatch = useDispatch()
-    const state = useSelector(state => state.todosReducer)
-    for (let i = 0; i < state.length; i++){
-        if (state[i].checked) {
+    const {todos} = useSelector(state => state.todosReducer)
+    const filter = useSelector(state => state.filterReducer)
+    for (let i = 0; i < todos.length; i++){
+        if (todos[i].checked) {
             classDeleter = "gray"
             break
         } else {
@@ -31,22 +27,7 @@ function Filter(props) {
     return (
         <div className="filter">
             <button id="counter" className="filter, gray" onClick={() => {
-                dispatch(checkAllTasksAPI())
-                setTimeout(function () {
-                    dispatch(checkedFalse())
-                }, 50)
-                setTimeout(function () {
-                    dispatch(checkedAny())
-                }, 50)
-                if (buttonClass[2] === "filterBtsSelected")
-                setTimeout(function () {
-                    dispatch(checkedTrue())
-                }, 50)
-                if (buttonClass[1] === "filterBtsSelected")
-                    setTimeout(function () {
-                        dispatch(checkedFalse())
-                    }, 50)
-            }} >{props.left} tasks left</button>
+                dispatch(checkAllTasksAPI()) }} >{props.left} tasks left</button>
             <div className="filterBtsDiv">
                 <button className={buttonClass[0]} onClick={() => {
                     dispatch(checkedAny())

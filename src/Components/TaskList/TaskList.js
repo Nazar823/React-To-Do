@@ -6,39 +6,35 @@ import "./style.css"
 import {useEffect} from "react";
 import {getTasksAPI} from "../../API/TaskAPI/getTasksAPI";
 
-let outArray;
-let len;
 function TaskList() {
     let dispatch = useDispatch()
     useEffect(()=>{
-        if (localStorage.getItem('token')) {
             dispatch(getTasksAPI())
-        }
-    })
-    const state = useSelector(state => state.todosReducer)
+    }, [])
+    const {todos} = useSelector(state => state.todosReducer)
     const filter = useSelector(state => state.filterReducer)
-    len = state.length
+    let outArray = [];
     switch (filter) {
         case "TRUE":
-            outArray = state.filter(task => task.checked)
+            outArray = todos.filter(task => task.checked)
             break
         case "FALSE":
-            outArray = state.filter(task => !task.checked)
+            outArray = todos.filter(task => !task.checked)
             break
         case "ANY":
-            outArray = state
+            outArray = todos
             break
         default:
-            outArray = state
+            outArray = todos
             break
     }
     let getFilter = ""
-    if (state.length > 0) {
-        getFilter = <Filter left={lenOfArr}/>
+    if (todos.length > 0) {
+        getFilter = <Filter left={todos.filter(task => !task.checked).length}/>
     }
     return (
         <div className="toDo">
-            <Input />
+            <Input/>
             {
                 outArray.map(task => <Items key={task.id} task={task}/>)
             }

@@ -7,35 +7,53 @@ import {
 } from "../actions/actionsType";
 import {getTasksAPI} from "../../API/TaskAPI/getTasksAPI";
 
-let initialState = []
-function todosReducer(state = initialState, action) {
-    console.log('STATE: ', state)
+let initialState = {
+    todos: [],
+    id: null,
+    isCheck: null
+}
+function todosReducer(state =initialState, action) {
     switch (action.type) {
         case GET_TODO:
-            return getTasksAPI(JSON.parse(localStorage.getItem('user')).id)
-        case UPDATE_TODO:
-            return state.filter(task => true)
+            // return getTasksAPI(JSON.parse(localStorage.getItem('user')).id)
+        return{
+            ...state,
+            todos: action.todos
+        }
         case ADD_TODO:
-            return [
+            return {
                 ...state,
-                action.newTodo
-            ]
+                todos: [...state.todos, action.newTodo]
+            }
         case DELETE_TODO:
-            return state.filter(task =>  task.id !== action.id)
+            return {
+                ...state,
+                todos: state.todos.filter(task => task.id !== action.id)
+            }
         case DELETE_CHECKED_TODO:
-            return state.filter(task => !task.checked)
+            return {
+                ...state,
+                todos: state.todos.filter(task => !task.checked
+                )
+            }
         case CHECK_TODO:
-            return state.map(task => {
-                if (task.id === action.id){
-                    task.checked = !task.checked
-                }
-                return task
-            })
+            return {
+                ...state,
+                todos: state.todos.map(task => {
+                    if (task.id === action.id){
+                        task.checked = !task.checked
+                    }
+                    return task
+                })
+            }
         case CHECK_ALL:
-            return state.map(task => {
-                task.checked = true
-                return task
-            })
+            return {
+                ...state,
+                todos: state.todos.map(task => {
+                        task.checked = true
+                    return task
+                })
+            }
         default:
             return state;
     }

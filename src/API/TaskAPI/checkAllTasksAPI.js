@@ -9,7 +9,7 @@ export const checkAllTasksAPI = () => {
                 user
             })
             if (response.status === 200) {
-                checkAll()
+                dispatch(checkAll())
             }
         } catch (e){
             console.log(e.message)

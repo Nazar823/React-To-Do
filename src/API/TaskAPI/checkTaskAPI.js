@@ -7,7 +7,9 @@ export const checkTaskAPI = (id, token) => {
             const response = await axios.post('http://localhost:5000/api/check',{
                 id
             })
-            checkTodo(id)
+            if (response.status === 200){
+                dispatch(checkTodo(id))
+            }
         } catch (e){
             console.log(e.message)
         }

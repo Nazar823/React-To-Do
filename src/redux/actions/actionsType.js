@@ -1,4 +1,3 @@
-export const UPDATE_TODO = "UPDATE_TODO"
 export const ADD_TODO = "ADD_TODO"
 export const CHECK_ALL = "CHECK_ALL"
 export const DELETE_TODO = "DELETE_TODO"

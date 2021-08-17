@@ -9,7 +9,7 @@ export const deleteCheckedAPI = () => {
                 user
             })
             if (response.status === 200) {
-                deleteChecked()
+                dispatch(deleteChecked())
             }
         } catch (e){
             console.log(e.message)
