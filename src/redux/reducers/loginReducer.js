@@ -38,8 +38,6 @@ export const loginRed = (username, password) =>
 
 
 const loginReducer = (state = initialState, action) => {
-    alert('редьюсер выполняется')
-    alert(action.type)
     switch (action.type){
         case LOGIN_SEND:
             console.log(state, action.payload)

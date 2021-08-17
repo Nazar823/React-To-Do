@@ -19,6 +19,7 @@ export const login = (username, password) => {
             if (response.status === 200) {
                 sendLogin(response.data)
                 localStorage.setItem('user', JSON.stringify(response.data.user))
+                localStorage.setItem('token', JSON.stringify(response.data.token))
                 dispatch(getTasksAPI(response.data.user.id))
             } else {
                 invalidAuth()

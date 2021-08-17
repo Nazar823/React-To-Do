@@ -6,7 +6,8 @@ export const getTasksAPI = (user, token) => {
         try {
             const response = await axios.post('http://localhost:5000/api/tasks',
                 {
-                user: JSON.parse(localStorage.getItem('user')).id
+                // user: JSON.parse(localStorage.getItem('user')).id,
+                    token: localStorage.getItem('token')
             },
                 {
                     headers: {"authorization": localStorage.getItem('token')}
