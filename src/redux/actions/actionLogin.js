@@ -1,18 +1,23 @@
 import {
-    LOGIN_SEND,
+    LOGIN_END,
     LOGIN_STARTED,
     ERR_LOGIN,
-    INVALID_AUTH
+    INVALID_AUTH,
+    NO_AUTH, AUTH
 } from "./actionsType";
 
-export const startedLogin = () => ({
-    type: LOGIN_STARTED,
+
+export const auth = () => ({
+    type: AUTH
 })
-export const sendLogin = (login_data) => ({
-    type: LOGIN_SEND,
-    payload: {
-        ...login_data
-    }
+export const noAuth = () => ({
+    type: NO_AUTH
+})
+export const startedLogin = () => ({
+    type: LOGIN_STARTED
+})
+export const endLogin = () => ({
+    type: LOGIN_END
 })
 export const invalidAuth = () => (-{
   type: INVALID_AUTH

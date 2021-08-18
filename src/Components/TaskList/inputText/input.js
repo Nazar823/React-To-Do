@@ -14,7 +14,7 @@ function Input() {
     function addTask(e) {
         if (e.key === 'Enter' && (textInput.trimRight().trimLeft() !== "")) {
             const user = localStorage.getItem('user')
-            dispatch(addTaskAPI(JSON.parse(user).id, textInput))
+            dispatch(addTaskAPI(textInput))
             setTextInput('');
         }
     }

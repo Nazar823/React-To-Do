@@ -4,6 +4,8 @@ import TaskList from "./Components/TaskList/TaskList";
 import Header from "./Components/Header";
 import Login from "./Components/Login/Login"
 import Registration from "./Components/Login/Registration/Registration";
+import PrivateRoute from "./redux/Routers/privateRouter"
+
 function App() {
     return (
         <div className="App">

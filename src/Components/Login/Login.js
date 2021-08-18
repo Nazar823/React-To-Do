@@ -1,16 +1,14 @@
 import "./style.css"
 import {Link} from "react-router-dom"
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {login} from "../../API/LoginAPI/LoginAPI";
-import {getTasksAPI} from "../../API/TaskAPI/getTasksAPI";
-
-
 
 function Login() {
     const dispatch = useDispatch()
     const thunkLog = (e) => {
         e.preventDefault()
         const fromData = new FormData(e.target)
+        // const log = useSelector(state => state.loginReducer)
         dispatch(login(fromData.get('username'), fromData.get('password')))
     }
     return(

@@ -3,20 +3,15 @@ import {
     CHECK_TODO,
     CHECK_ALL, GET_TODO,
     DELETE_CHECKED_TODO,
-    DELETE_TODO, UPDATE_TODO
+    DELETE_TODO
 } from "../actions/actionsType";
-import {getTasksAPI} from "../../API/TaskAPI/getTasksAPI";
 
 let initialState = {
-    todos: [],
-    id: null,
-    isCheck: null
+    todos: []
 }
-function todosReducer(state =initialState, action) {
+function todosReducer(state = initialState, action) {
     switch (action.type) {
-        case GET_TODO:
-            // return getTasksAPI(JSON.parse(localStorage.getItem('user')).id)
-        return{
+        case GET_TODO:return{
             ...state,
             todos: action.todos
         }
