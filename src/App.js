@@ -5,17 +5,21 @@ import Header from "./Components/Header";
 import Login from "./Components/Login/Login"
 import Registration from "./Components/Login/Registration/Registration";
 import PrivateRoute from "./redux/Routers/privateRouter"
+import {Loader} from "./Components/TaskList/Loader/Loader";
+import {useSelector} from "react-redux";
 
 function App() {
+    const {loading} = useSelector(state => state.loginReducer)
     return (
         <div className="App">
             <Header/>
             <Switch>
-                <Route path='/registration' component={Registration}/>
-                <Route path='/login' component={Login}/>
-                <Route path='/tasks' component={TaskList}/>
+                <PrivateRoute exact path='/registration' auth={false} component={Registration}/>
+                <PrivateRoute exact to='/tasks' auth={false} path='/login' component={Login}/>
+                <PrivateRoute exact to='/login' auth={true} exact path='/tasks' component={TaskList}/>
                 <Redirect from='/' to='/login'/>
             </Switch>
+            {loading && (<Loader/>)}
         </div>
     );
 };

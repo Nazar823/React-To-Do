@@ -3,7 +3,9 @@ import {
     errLogin,
     invalidAuth,
     endLogin,
-    startedLogin
+    startedLogin,
+    auth,
+    noAuth
 } from "../../redux/actions/actionLogin";
 import {getTasksAPI} from "../TaskAPI/getTasksAPI";
 
@@ -17,11 +19,13 @@ export const login = (username, password) => {
                     password
                 })
             if (response.status === 200) {
+                dispatch(auth())
                 dispatch(endLogin(response.data))
                 localStorage.setItem('authorization', response.data.token)
-                dispatch(getTasksAPI())
+                window.location.reload()
             } else {
-                invalidAuth()
+                dispatch(invalidAuth())
+                dispatch(noAuth())
             }
         } catch (e) {
             errLogin(e)

@@ -8,7 +8,6 @@ function Login() {
     const thunkLog = (e) => {
         e.preventDefault()
         const fromData = new FormData(e.target)
-        // const log = useSelector(state => state.loginReducer)
         dispatch(login(fromData.get('username'), fromData.get('password')))
     }
     return(
@@ -22,7 +21,9 @@ function Login() {
                 <Link to="/registration">
                     <button id="regBT">Registration</button>
                 </Link>
-                <button id="loginBT">Login</button>
+                {/*<Link to="/tasks">*/}
+                    <button id="loginBT">Login</button>
+                {/*</Link>*/}
             </form>
         </div>
     )

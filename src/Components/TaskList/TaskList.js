@@ -7,10 +7,15 @@ import {useEffect} from "react";
 import {getTasksAPI} from "../../API/TaskAPI/getTasksAPI";
 
 function TaskList() {
+    if(!localStorage.getItem('authorization')){
+        window.location.reload()
+    }
     let dispatch = useDispatch()
-    useEffect(()=>{
+
+    useEffect(()=> {
             dispatch(getTasksAPI())
     }, [])
+
     const {todos} = useSelector(state => state.todosReducer)
     const filter = useSelector(state => state.filterReducer)
     let outArray = [];
@@ -28,17 +33,13 @@ function TaskList() {
             outArray = todos
             break
     }
-    let getFilter = ""
-    if (todos.length > 0) {
-        getFilter = <Filter left={todos.filter(task => !task.checked).length}/>
-    }
     return (
         <div className="toDo">
             <Input/>
             {
                 outArray.map(task => <Items key={task.id} task={task}/>)
             }
-            {getFilter}
+            {todos.length > 0 && <Filter left={todos.filter(task => !task.checked).length}/>}
         </div>
     );
 }
