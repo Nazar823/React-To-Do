@@ -2,17 +2,16 @@ import axios from "axios";
 import {
     errLogin,
     invalidAuth,
-    endLogin,
-    startedLogin,
+    endLoading,
+    startLoading,
     auth,
     noAuth
 } from "../../redux/actions/actionLogin";
-import {getTasksAPI} from "../TaskAPI/getTasksAPI";
 
 export const login = (username, password) => {
     return async dispatch => {
         try {
-            dispatch(startedLogin())
+            dispatch(startLoading())
             const response = await axios.post('http://localhost:5000/api/login',
                 {
                     username,
@@ -20,15 +19,18 @@ export const login = (username, password) => {
                 })
             if (response.status === 200) {
                 dispatch(auth())
-                dispatch(endLogin(response.data))
                 localStorage.setItem('authorization', response.data.token)
+                // dispatch(endLoading())
                 window.location.reload()
             } else {
+                dispatch(endLoading())
                 dispatch(invalidAuth())
                 dispatch(noAuth())
             }
         } catch (e) {
-            errLogin(e)
+            dispatch(noAuth())
+            dispatch(endLoading())
+            dispatch(errLogin(e))
             alert(e.message)
             console.log(e)
         } finally {

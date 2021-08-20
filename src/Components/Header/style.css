@@ -1,22 +1,31 @@
-#out {
-    left: 0px;
-    top: 0px;
+#out, #about {
     transition: 0.7s;
-    margin: 5px;
+    /*margin: 5px;*/
     /*font-size: 16px;*/
     font-weight: bold;
-    padding: 5px 10px;
+    padding: 10px 20px;
     border: none;
-    box-shadow: 1px 1px 5px 2px #bbbbbb;
-    border-radius: 5px;
+    /*box-shadow: 1px 1px 5px 2px #bbbbbb;*/
+    /*border-radius: 5px;*/
     background: white;
     color: #222;
+    /*position: absolute;*/
+}
+#out, #about {
+    left: 0px;
+    top: 0px;
     position: absolute;
 }
-#out:hover {
+#out {
+    left: 98px;
+}
+#out:hover, #about:hover {
     color: white;
     box-shadow: 2px 2px 7px 4px #bbbbbb;
     background: #dc0808;
+}
+#about:hover {
+    background-color: #1b7ede;
 }
 header {
     display: flex;

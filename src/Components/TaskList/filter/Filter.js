@@ -8,6 +8,7 @@ import {
 import "./style.css"
 import {deleteCheckedAPI} from "../../../API/TaskAPI/deleteCheckedAPI";
 import {checkAllTasksAPI} from "../../../API/TaskAPI/checkAllTasksAPI";
+import {startLoading} from "../../../redux/actions/actionLogin";
 
 let classDeleter
 let buttonClass = ["filterBtsSelected", "filterBts", "filterBts"]

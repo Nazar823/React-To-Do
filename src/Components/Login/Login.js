@@ -21,9 +21,7 @@ function Login() {
                 <Link to="/registration">
                     <button id="regBT">Registration</button>
                 </Link>
-                {/*<Link to="/tasks">*/}
-                    <button id="loginBT">Login</button>
-                {/*</Link>*/}
+                <button id="loginBT">Login</button>
             </form>
         </div>
     )

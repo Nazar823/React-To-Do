@@ -1,6 +1,6 @@
 import {
-    LOGIN_END,
-    LOGIN_STARTED,
+    LOADING_END,
+    LOADING_STARTED,
     ERR_LOGIN,
     INVALID_AUTH,
     NO_AUTH, AUTH
@@ -13,11 +13,11 @@ export const auth = () => ({
 export const noAuth = () => ({
     type: NO_AUTH
 })
-export const startedLogin = () => ({
-    type: LOGIN_STARTED
+export const startLoading = () => ({
+    type: LOADING_STARTED
 })
-export const endLogin = () => ({
-    type: LOGIN_END
+export const endLoading = () => ({
+    type: LOADING_END
 })
 export const invalidAuth = () => (-{
   type: INVALID_AUTH

@@ -1,6 +1,6 @@
 import {
-    LOGIN_STARTED,
-    LOGIN_END,
+    LOADING_STARTED,
+    LOADING_END,
     AUTH,
     NO_AUTH
 } from "../actions/actionsType";
@@ -11,12 +11,12 @@ let initialState = {
 }
 function loginReducer(state = initialState, action) {
 switch (action.type) {
-    case LOGIN_STARTED:
+    case LOADING_STARTED:
         return {
             ...state,
             loading: true
         }
-    case LOGIN_END:
+    case LOADING_END:
         return {
             ...state,
             loading: false
